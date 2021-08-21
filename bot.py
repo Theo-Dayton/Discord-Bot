@@ -9,7 +9,7 @@ import yfinance as yf
 from dotenv import load_dotenv
 from discord.ext import commands
 
-TOKEN = 'ODA2NjQ3MDQxMDMxNzk4Nzg1.YBsemQ.Wz3QzFbSNIf5pDIXvC-ME7Oujl4'
+TOKEN = os.getenv('TOKEN')
 
 bot = commands.Bot(command_prefix='!')
 
@@ -29,16 +29,16 @@ async def meme(ctx):
         embed.description = "[Here's a random meme](https://cutt.ly/lkQ8B3n)."
         await ctx.channel.send(embed=embed)
     
-@bot.command(name='hentai', help='Provides user with a cool hentai gif')
-async def hentai(ctx):
+@bot.command(name='gif', help='Provides user with a cool gif')
+async def gif(ctx):
     x = random.randint(1,10)
     if x == 1:
         embed = discord.Embed()
-        embed.description = "[Here's a random hentai gif](https://cutt.ly/2kRQZOv)."
+        embed.description = "[Here's a random gif](https://cutt.ly/2kRQZOv)."
         await ctx.channel.send(embed=embed)
     else:
         embed = discord.Embed()
-        embed.description = "[Here's a random hentai gif](https://cutt.ly/lkQ8B3n)."
+        embed.description = "[Here's a random gif](https://cutt.ly/lkQ8B3n)."
         await ctx.channel.send(embed=embed)
 
 @bot.command(name='anime', help='Provides user with a rad anime gif')

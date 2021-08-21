@@ -9,7 +9,10 @@ import yfinance as yf
 from dotenv import load_dotenv
 from discord.ext import commands
 
-TOKEN = os.getenv('TOKEN')
+
+load_dotenv('.env')
+TOKEN = os.getenv('DISCORD_TOKEN')
+
 
 bot = commands.Bot(command_prefix='!')
 
@@ -53,13 +56,13 @@ async def anime(ctx):
         embed.description = "[Here's a random anime gif](https://cutt.ly/lkQ8B3n)."
         await ctx.channel.send(embed=embed)
 
-@bot.command(name='cute', help='Will send a cute anime girl your way')
-async def ecchi(ctx):
-    path = r"C:\Users\tdayt\Desktop\aaa\Anime Collection"
-    files=os.listdir(path)
-    d=random.choice(files)
-    real_path = r"/Users/tdayt/Desktop/aaa/Anime Collection/" + d
-    await ctx.channel.send(file=discord.File(real_path))
+# @bot.command(name='cute', help='Will send a cute anime girl your way')
+# async def ecchi(ctx):
+#     path = r"C:\Users\tdayt\Desktop\aaa\Anime Collection"
+#     files=os.listdir(path)
+#     d=random.choice(files)
+#     real_path = r"/Users/tdayt/Desktop/aaa/Anime Collection/" + d
+#     await ctx.channel.send(file=discord.File(real_path))
     
 
 
@@ -85,6 +88,7 @@ async def stock(ctx, arg):
 
 
     stock_price = soup.findAll(class_ = "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")[0].text
+
 
     if stock_price == '':
         await ctx.channel.send(f"Couldn't find {super_stock_name} in database. Maybe learn how to spell?")
